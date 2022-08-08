@@ -10,6 +10,8 @@ import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
 import Chatroom from './pages/chatroom/Chatroom'
 import Navbar from './components/Navbar'
+import Create from './pages/create/Create'
+import OnlineUsers from './components/OnlineUsers'
 
 function App() {
 	const { user, isAuthReady } = useAuthContext()
@@ -25,8 +27,10 @@ function App() {
 							<Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
 							<Route path='/signup' element={!user ? <Signup /> : <Navigate to='/' />} />
 							<Route path='/chatroom/:id' element={user ? <Chatroom /> : <Navigate to='/login' />} />
+							<Route path='/create' element={user ? <Create /> : <Navigate to='/login' />} />
 						</Routes>
 					</div>
+					{user && <OnlineUsers />}
 				</BrowserRouter>
 			)}
 		</div>
